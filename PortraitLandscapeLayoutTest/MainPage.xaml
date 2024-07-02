@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortraitLandscapeLayoutTest.MainPage">
+    <ContentPage.Content>
+        <Grid x:Name="MainGrid">
+
+            <!-- Portrait definitions that work -->
+            <!--
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView x:Name="Box1" BackgroundColor="Red" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" />
+            <BoxView x:Name="Box2" BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1"/>
+            <BoxView x:Name="Box3" BackgroundColor="Blue" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" />
+            -->
+
+            <!-- Landscape definitions that work -->
+            <!--
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView x:Name="Box1" BackgroundColor="Red" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" />
+            <BoxView x:Name="Box2" BackgroundColor="Green" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="2"/>
+            <BoxView x:Name="Box3" BackgroundColor="Blue" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" />
+            -->
+
+            
+            <!-- How it should be done, if Microsoft had of implemented the bit where it actually applies.. So we'll use our own class to apply it -->
+            <BoxView x:Name="Box1" BackgroundColor="Red" />
+            <BoxView x:Name="Box2" BackgroundColor="Green" />
+            <BoxView x:Name="Box3" BackgroundColor="Blue" />
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="OrientationStates">
+                    <VisualState Name="Portrait">
+                        <VisualState.Setters>
+                            <Setter TargetName="MainGrid" Property="Grid.RowDefinitions">
+                                <Setter.Value>
+                                    <RowDefinitionCollection>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </RowDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="MainGrid" Property="Grid.ColumnDefinitions">
+                                <Setter.Value>
+                                    <ColumnDefinitionCollection>
+                                        <ColumnDefinition Width="*" />
+                                    </ColumnDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter TargetName="Box1" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Box1" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Box1" Property="Grid.ColumnSpan" Value="1" />
+                            <Setter TargetName="Box1" Property="Grid.RowSpan" Value="1" />
+
+                            <Setter TargetName="Box2" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Box2" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Box2" Property="Grid.ColumnSpan" Value="1" />
+                            <Setter TargetName="Box2" Property="Grid.RowSpan" Value="1" />
+
+                            <Setter TargetName="Box3" Property="Grid.Row" Value="2" />
+                            <Setter TargetName="Box3" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Box3" Property="Grid.ColumnSpan" Value="1" />
+                            <Setter TargetName="Box3" Property="Grid.RowSpan" Value="1" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState Name="Landscape">
+                        <VisualState.Setters>
+
+                            <Setter TargetName="MainGrid" Property="Grid.RowDefinitions">
+                                <Setter.Value>
+                                    <RowDefinitionCollection>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </RowDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="MainGrid" Property="Grid.ColumnDefinitions">
+                                <Setter.Value>
+                                    <ColumnDefinitionCollection>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </ColumnDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+
+
+                            <Setter TargetName="Box1" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Box1" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Box1" Property="Grid.RowSpan" Value="1" />
+                            <Setter TargetName="Box1" Property="Grid.ColumnSpan" Value="1" />
+
+                            <Setter TargetName="Box2" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Box2" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Box2" Property="Grid.RowSpan" Value="2" />
+                            <Setter TargetName="Box2" Property="Grid.ColumnSpan" Value="1" />
+
+                            <Setter TargetName="Box3" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Box3" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Box3" Property="Grid.RowSpan" Value="1" />
+                            <Setter TargetName="Box3" Property="Grid.ColumnSpan" Value="1" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
